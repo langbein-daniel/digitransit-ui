@@ -224,6 +224,8 @@ export default {
   minTransferTime: 90,
   optimize: 'GREENWAYS',
   transferPenalty: 0,
+
+  // Limit the available languages in `MainMenu.js`.
   availableLanguages: ['fi', 'sv', 'en', 'fr', 'nb', 'de', 'da', 'es', 'ro'],
   defaultLanguage: 'en',
   timezone: 'Europe/Helsinki',
@@ -661,7 +663,7 @@ export default {
         ],
       },
       {
-        header: 'Digitransit platform',
+        header: 'The Digitransit platform',
         paragraphs: [
           'The Digitransit service platform is an open source routing platform developed by HSL and Traficom.',
         ],
@@ -764,6 +766,7 @@ export default {
     oulu: 'oulu',
     hameenlinna: 'hameenlinna',
     matka: 'matka',
+    btp: 'btp',
     vaasa: 'vaasa',
     walttiOpas: 'waltti',
     rovaniemi: 'rovaniemi',
@@ -779,8 +782,8 @@ export default {
 
   minutesToDepartureLimit: 9,
 
+  // this flag, when true, enables imperial measurements  'feet/miles system'
   imperialEnabled: false,
-  // this flag when true enables imperial measurements  'feet/miles system'
 
   vehicles: false,
   showVehiclesOnStopPage: false,
@@ -799,9 +802,9 @@ export default {
   includeBikeSuggestions: true,
   includeCarSuggestions: false,
   includeParkAndRideSuggestions: false,
-  // Include both bike and park and bike and public
+  // Include both "bike and park" and "bike and public"
   includePublicWithBikePlan: false,
-  // Park and ride and car suggestions separated
+  // "Park and ride" and car suggestions separated
   separatedParkAndRideSwitch: false,
 
   showNearYouButtons: false,
