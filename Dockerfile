@@ -1,7 +1,10 @@
+# End of life, >= 7 ciritical vulnerabilities
+# https://hub.docker.com/layers/library/node/12/images/sha256-3a69ea1270dbf4ef20477361be4b7a43400e559c6abdfaf69d73f7c755f434f5?context=explore
 FROM node:12
 MAINTAINER Reittiopas version: 0.1
 
-EXPOSE 8080
+ARG PORT=8080
+EXPOSE ${PORT}
 
 ENV \
   # Where the app is built and run inside the docker fs \
@@ -11,7 +14,7 @@ ENV \
   # App specific settings to override when the image is run \
   SENTRY_DSN='' \
   SENTRY_SECRET_DSN='' \
-  PORT=8080 \
+  PORT=${PORT} \
   API_URL='' \
   MAP_URL='' \
   OTP_URL='' \
@@ -34,11 +37,12 @@ ENV \
 WORKDIR ${WORK}
 ADD . ${WORK}
 
-RUN \
-  yarn && \
-  yarn setup && \
-  yarn build && \
-  rm -rf static docs test /tmp/* .cache && \
-  yarn cache clean --all
+RUN npm install yarn
+
+RUN yarn install
+RUN yarn setup
+RUN OPENSSL_CONF=/dev/null yarn build
+#RUN rm -rf static docs test /tmp/* .cache
+#RUN yarn cache clean --all
 
 CMD yarn run start
