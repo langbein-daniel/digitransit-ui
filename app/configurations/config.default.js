@@ -234,7 +234,7 @@ export default {
   allowFavouritesFromLocalstorage: true,
   useExtendedRouteTypes: false,
   mainMenu: {
-    // Whether to show the left menu toggle button at all
+    // Whether to show the top right menu button at all
     show: true,
     showDisruptions: true,
     showLoginCreateAccount: true,
