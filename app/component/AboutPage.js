@@ -16,7 +16,10 @@ const AboutPage = ({ currentLanguage }, { config }) => {
               <h1 className="about-header">{section.header}</h1>
               {section.paragraphs &&
                 section.paragraphs.map((p, j) => (
-                  <p key={`about-section-${i}-p-${j}`}>{p}</p>
+                  <p
+                    dangerouslySetInnerHTML={{ __html: p }}
+                    key={`about-section-${i}-p-${j}`}>
+                  </p>
                 ))}
               {section.link && (
                 <a href={section.link}>
