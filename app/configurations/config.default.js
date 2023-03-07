@@ -390,6 +390,8 @@ export default {
   },
 
   agency: {
+    // When viewing a trip, show a link to the operating agency
+    // next to trip legs.
     show: true,
   },
 
