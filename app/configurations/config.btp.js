@@ -17,6 +17,12 @@ export default {
 
   YEAR,
 
+  // Transit Feed
+  //
+  // TODO transit agency??
+  // GTFS.zip/agency.txt/agency_name=HSL
+  //feedIds: ['OULU'],
+
   URL: {
     MAP: {
       // https://github.com/HSLdevcom/digitransit-ui/blob/eecdbb38a5d9108ea07d47d4ec6bb43fd4e2b15d/app/component/map/Map.js#L216
@@ -37,6 +43,8 @@ export default {
   showWeatherInformation: false,
 
   showBikeAndPublicItineraries: true,
+  // If disabled, one can't enable the "bike & ride" and "bike and transit" modes.
+  // However, `includePublicWithBikePlan` overrides this setting.
   showBikeAndParkItineraries: true,
 
   includeBikeSuggestions: true,
@@ -44,14 +52,17 @@ export default {
 
   // Same as the setting after, but for bikes ? TODO
   includeParkAndRideSuggestions: false,
-  // Public transit is always considered for bike connections.
-  // This can result in "Bike and Public" or "Bike and Ride" suggestions. ? TODO
-  includePublicWithBikePlan: false,
-
-  // Separate switches for "Bike and Park" and "Park and Ride" ? TODO
+  // "bike & ride" and "bike & transit" modes are always enabled.
+  // Therefore, the "park and ride" switch disappears from the bike settings.
   //
-  // This results in a "Park and Ride" switch in the "Bike" settings if both
-  // showBikeAndPublicItineraries and showBikeAndParkItineraries
+  includePublicWithBikePlan: true,
+
+  // If there shall be two switches in settings:
+  // - One switch "Park and Ride" that toggles "bike & ride" and "bike & transit" suggestions
+  // - Another switch to toggle car suggestions
+  //
+  // The "Park and Ride" switch in the "Bike" settings is only shown
+  // if both showBikeAndPublicItineraries and showBikeAndParkItineraries
   // are true.
   separatedParkAndRideSwitch: true,
 
@@ -60,10 +71,33 @@ export default {
   //
   // If availableForSelection or defaultValue is false, then the transportMode is not used for trip planning.
   transportModes: {
+    funicular: {
+      availableForSelection: true,
+      defaultValue: true,
+    },
+
+    // Controls the BICYCLE_RENT OTP mode. See "modeToOTP" in config.default.js
     citybike: {
       availableForSelection: false,
       defaultValue: false, // always false
     },
+  },
+
+  // TODO: GTFS-RT required?
+  vehicles: false,
+  showVehiclesOnStopPage: true,
+  showVehiclesOnSummaryPage: true,
+
+  // TODO: Missing in GTFS feed of VGN
+  //
+  // https://developers.google.com/transit/gtfs/reference#stopstxt
+  // - Identifies the fare zone for a stop. This field is required if providing fare information using fare_rules.txt, otherwise it is optional.
+  //
+  // See schema.graphql Stop zoneid "ID of the zone where this stop is located"
+  // See legUtils.js getZoneLabel
+  zones: {
+    stops: false,
+    itinerary: false,
   },
 
   appBarLink: {
@@ -76,7 +110,7 @@ export default {
   colors: {
     primary: '#208922',
     // iconColors: {
-    //   'mode-bus': '#e10669',
+    //   'mode-bus': '#208922',
     // },
   },
 
@@ -97,6 +131,9 @@ export default {
 
   // by default use only `osm` source of geocoder (Pelias), and not the `gtfs` source (stops and stations)
   searchSources: ['osm'],
+  // Not required if "park & ride" is disabled.
+  // parkingAreaSources: ['liipi'],
+
 
   searchParams: {
     'boundary.rect.min_lat': minLat,
@@ -134,6 +171,26 @@ export default {
     },
   },
 
+    mainMenu: {
+    // Whether to show the top right menu button at all
+    // show: true,
+    showDisruptions: false,
+    showLoginCreateAccount: false,
+    // This option is not used anywhere.
+    showOffCanvasList: true,
+    // Independent of this option one can also return to the front page by closing the menu.
+    showFrontPageLink: false,
+    // If true, one can generate the URL of a virtual stop monitor that displays the upcoming departures.
+    // Example: https://matkamonitori.digitransit.fi/createview
+    // Requires an instance of https://github.com/HSLdevcom/digitransit-virtualmonitor
+    stopMonitor: {
+      show: false,
+      // url: 'https://my-digitransit-url/createview',
+    },
+    // If true, one can generate and copy HTML iframe code from the menu ("Create a route search element").
+    showEmbeddedSearch: false,
+  },
+
   menu: {
     copyright: { label: `© Daniel Langbein ${YEAR}` },
     content: [
@@ -155,9 +212,9 @@ export default {
   },
 
   // config.default.js includes three sections for the english locale:
-  //   "About this service", "Digitransit platform" and "Data sources"
+  //   "About this service", "The Digitransit platform" and "Data sources"
   // These are always included on the aboutThisService page.
-  // But they can be overridden:
+  // But one can change their content.
   aboutThisService: {
     de: [
       {
