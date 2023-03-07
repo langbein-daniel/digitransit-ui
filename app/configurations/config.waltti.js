@@ -146,6 +146,12 @@ export default {
     },
   },
 
+  // Different icons.
+  //
+  // CtrlPanel.NearStopsAndRoutes
+  //   Show button links to near you page for different travel modes
+  //   modeSet={config.nearbyModeSet || config.iconModeSet}
+  //   function getIconName(mode, modeSet)
   nearbyModeSet: 'waltti',
 
   redirectReittiopasParams: true,
@@ -182,6 +188,7 @@ export default {
   parkingAreaSources: ['liipi'],
 
   parkAndRide: {
+    // MapLayersDialogContent -> User can enable/disable "Park & ride sites" map layer
     showParkAndRide: false,
     parkAndRideMinZoom: 13,
     pageContent: {

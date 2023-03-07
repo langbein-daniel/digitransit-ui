@@ -813,6 +813,10 @@ export default {
   // "Park and ride" and car suggestions separated
   separatedParkAndRideSwitch: false,
 
+  // See also:
+  // - transportModes.nearYouButton
+  // - transportModes.nearYouTitle
+  // - transportModes.*.nearYouLabel
   showNearYouButtons: false,
   nearYouModes: [],
   narrowNearYouButtons: false,
