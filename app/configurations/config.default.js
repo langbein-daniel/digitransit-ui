@@ -827,6 +827,8 @@ export default {
   messageBarAlerts: false,
 
   availableTickets: {},
+  // If true, load available tickets from OTP and store in `availableTickets` config value.
+  loadAvailableTickets: true,
   zones: {
     stops: false,
     itinerary: false,

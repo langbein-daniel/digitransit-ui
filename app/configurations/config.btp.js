@@ -42,6 +42,10 @@ export default {
 
   showWeatherInformation: false,
 
+  availableTickets: {},
+  // If true, load available tickets from OTP and store in `availableTickets` config value.
+  loadAvailableTickets: false,
+
   showBikeAndPublicItineraries: true,
   // If disabled, one can't enable the "bike & ride" and "bike and transit" modes.
   // However, `includePublicWithBikePlan` overrides this setting.
