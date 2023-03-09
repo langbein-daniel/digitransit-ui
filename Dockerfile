@@ -34,6 +34,10 @@ ENV \
   ASSET_URL='' \
   STATIC_MESSAGE_URL=''
 
+# Tell Playwright not to download browser binaries, as it is only used for testing (not building).
+# https://github.com/microsoft/playwright/blob/v1.16.2/installation-tests/installation-tests.sh#L200-L216
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+
 WORKDIR ${WORK}
 ADD . ${WORK}
 
