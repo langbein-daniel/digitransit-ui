@@ -47,7 +47,7 @@ RUN npm install yarn
 RUN yarn install
 RUN yarn setup
 RUN OPENSSL_CONF=/dev/null yarn build
-#RUN rm -rf static docs test /tmp/* .cache
-#RUN yarn cache clean --all
+RUN rm -rf static docs test /tmp/* .cache
+RUN yarn cache clean --all
 
 CMD yarn run start
