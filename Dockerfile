@@ -50,3 +50,7 @@ RUN rm -rf static docs test /tmp/* .cache
 RUN yarn cache clean --all
 
 CMD yarn run start
+
+# Fetch the 'About this service' page.
+HEALTHCHECK --interval=30s --retries=1 --start-period=15s --timeout=5s \
+ CMD curl -sSf 'http://localhost:8080/tietoja-palvelusta' > /dev/null
