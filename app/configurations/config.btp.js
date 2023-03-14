@@ -154,9 +154,12 @@ export default {
   ],
 
   defaultEndpoint: {
-    address: 'Center',
-    lat: 0.5 * (minLat + maxLat),
-    lon: 0.5 * (minLon + maxLon),
+    lat: 49.446403,
+    lon: 11.082948,
+
+    // TODO: With the following, the main page has a white map until one searches for a location.
+    // lat: 0.5 * (minLat + maxLat),
+    // lon: 0.5 * (minLon + maxLon),
   },
 
   // Note: Based on config.hsl.js
