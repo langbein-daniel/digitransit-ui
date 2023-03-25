@@ -5,6 +5,7 @@ const YEAR = 1900 + new Date().getYear();
 
 const DEFAULT_MAP_URL =
   process.env.DEFAULT_MAP_URL || 'http://localhost:7070/styles/bicycle/';
+const OTP_TIMEOUT = process.env.OTP_TIMEOUT || 100000;
 
 const minLat = process.env.MIN_LAT || '48.70792025947608';
 const maxLat = process.env.MAX_LAT || '50.25793688217101';
@@ -17,11 +18,14 @@ export default {
 
   YEAR,
 
+  // TODO: In 1/10th milliseconds?
+  OTPTimeout: OTP_TIMEOUT,
+
   // Transit Feed
   //
   // TODO transit agency??
   // GTFS.zip/agency.txt/agency_name=HSL
-  //feedIds: ['OULU'],
+  // feedIds: ['OULU'],
 
   URL: {
     MAP: {
@@ -138,7 +142,6 @@ export default {
   // Not required if "park & ride" is disabled.
   // parkingAreaSources: ['liipi'],
 
-
   searchParams: {
     'boundary.rect.min_lat': minLat,
     'boundary.rect.max_lat': maxLat,
@@ -178,7 +181,7 @@ export default {
     },
   },
 
-    mainMenu: {
+  mainMenu: {
     // Whether to show the top right menu button at all
     // show: true,
     showDisruptions: false,
@@ -204,10 +207,8 @@ export default {
       {
         name: 'menu-feedback',
         href: {
-          en:
-            'https://github.com/langbein-daniel/BikeTripPlanner/issues',
-          de:
-            'https://github.com/langbein-daniel/BikeTripPlanner/issues',
+          en: 'https://github.com/langbein-daniel/BikeTripPlanner/issues',
+          de: 'https://github.com/langbein-daniel/BikeTripPlanner/issues',
         },
       },
       {
