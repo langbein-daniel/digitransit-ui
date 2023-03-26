@@ -221,7 +221,7 @@ export default {
 
   // config.default.js includes three sections for the english locale:
   //   "About this service", "The Digitransit platform" and "Data sources"
-  // These are always included on the aboutThisService page.
+  // These are always included on the aboutThisService page even if they are removed here.
   // But one can change their content.
   aboutThisService: {
     de: [
@@ -242,9 +242,16 @@ export default {
         header: 'Datenquellen',
         paragraphs: [
           // TODO. Inspiration: https://herrenberg.stadtnavi.de/dieser-dienst
-          'Karten, Straßen, Gebäude, Haltestellen, etc. wurden von OpenStreetMap Beitragenden erstellt. Adressdaten stammen von ... Öffentliche Verkehrslinien und Fahrpläne basieren auf ...',
+          'Karten, Straßen, Gebäude, Fahrradständer, Haltestellen, etc. wurden von OpenStreetMap Beitragenden erstellt. Adressdaten stammen von Who\'s On First. Öffentliche Verkehrslinien und Fahrpläne stammen vom VGN.',
         ],
       },
+      {
+        header: 'Datenschutzhinweise',
+        paragraphs: [
+          // TODO
+          'Die Datenschutzhinweise können <a href="https://cloud.privacy1st.de/s/6yyiD4CRHMno2Sd">hier</a> gelesen werden.'
+        ]
+      }
     ],
 
     en: [
@@ -265,9 +272,16 @@ export default {
         header: 'Data sources',
         paragraphs: [
           // TODO
-          'Maps, streets, buildings, stop locations etc. are provided by © OpenStreetMap contributors. Address data is retrieved from ... Public transport routes and timetables are downloaded from ...',
+          'Maps, streets, buildings, bike lockers, stop locations etc. are provided by OpenStreetMap contributors. Address data is retrieved from Who\'s On First. Public transport routes and timetables are downloaded from the VGN.',
         ],
       },
+      {
+        header: 'Privacy Policy',
+        paragraphs: [
+          // TODO
+          'This website is located in Germany. The privacy policy is at the moment only available in German and can be read <a href="https://cloud.privacy1st.de/s/6yyiD4CRHMno2Sd">here</a>.'
+        ]
+      }
     ],
   },
 };
