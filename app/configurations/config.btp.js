@@ -5,7 +5,7 @@ const YEAR = 1900 + new Date().getYear();
 
 const DEFAULT_MAP_URL =
   process.env.DEFAULT_MAP_URL || 'http://localhost:7070/styles/bicycle/';
-const OTP_TIMEOUT = process.env.OTP_TIMEOUT || 100000;
+const OTP_TIMEOUT = process.env.OTP_TIMEOUT || 12500;
 
 const minLat = process.env.MIN_LAT || '48.70792025947608';
 const maxLat = process.env.MAX_LAT || '50.25793688217101';
@@ -18,7 +18,10 @@ export default {
 
   YEAR,
 
-  // TODO: In 1/10th milliseconds?
+  // In milliseconds.
+  // - https://github.com/HSLdevcom/digitransit-ui/commit/da6890e3c8abc880b391190b734d5d56384f7ffd#diff-d578a4a1cccbfcf5001962e74b1c2faad229fbe727ba8d3beecaec621e5faafcR104
+  // - https://github.com/relay-tools/react-relay-network-modern/blob/bf0b16f7a008bdaf72e97a92eeddf9ee4d2d7a38/src/middlewares/retry.js#L51
+  // - https://github.com/relay-tools/react-relay-network-modern/blob/bf0b16f7a008bdaf72e97a92eeddf9ee4d2d7a38/src/middlewares/retry.js#L77
   OTPTimeout: OTP_TIMEOUT,
 
   // Transit Feed
@@ -242,16 +245,16 @@ export default {
         header: 'Datenquellen',
         paragraphs: [
           // TODO. Inspiration: https://herrenberg.stadtnavi.de/dieser-dienst
-          'Karten, Straßen, Gebäude, Fahrradständer, Haltestellen, etc. wurden von OpenStreetMap Beitragenden erstellt. Adressdaten stammen von Who\'s On First. Öffentliche Verkehrslinien und Fahrpläne stammen vom VGN.',
+          "Karten, Straßen, Gebäude, Fahrradständer, Haltestellen, etc. wurden von OpenStreetMap Beitragenden erstellt. Adressdaten stammen von Who's On First. Öffentliche Verkehrslinien und Fahrpläne stammen vom VGN.",
         ],
       },
       {
         header: 'Datenschutzhinweise',
         paragraphs: [
           // TODO
-          'Die Datenschutzhinweise können <a href="https://cloud.privacy1st.de/s/6yyiD4CRHMno2Sd">hier</a> gelesen werden.'
-        ]
-      }
+          'Die Datenschutzhinweise können <a href="https://cloud.privacy1st.de/s/6yyiD4CRHMno2Sd">hier</a> gelesen werden.',
+        ],
+      },
     ],
 
     en: [
@@ -272,16 +275,16 @@ export default {
         header: 'Data sources',
         paragraphs: [
           // TODO
-          'Maps, streets, buildings, bike lockers, stop locations etc. are provided by OpenStreetMap contributors. Address data is retrieved from Who\'s On First. Public transport routes and timetables are downloaded from the VGN.',
+          "Maps, streets, buildings, bike lockers, stop locations etc. are provided by OpenStreetMap contributors. Address data is retrieved from Who's On First. Public transport routes and timetables are downloaded from the VGN.",
         ],
       },
       {
         header: 'Privacy Policy',
         paragraphs: [
           // TODO
-          'This website is located in Germany. The privacy policy is at the moment only available in German and can be read <a href="https://cloud.privacy1st.de/s/6yyiD4CRHMno2Sd">here</a>.'
-        ]
-      }
+          'This website is located in Germany. The privacy policy is at the moment only available in German and can be read <a href="https://cloud.privacy1st.de/s/6yyiD4CRHMno2Sd">here</a>.',
+        ],
+      },
     ],
   },
 };
