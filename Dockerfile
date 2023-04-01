@@ -3,41 +3,11 @@
 FROM node:12
 MAINTAINER Reittiopas version: 0.1
 
-ARG PORT=8080
-EXPOSE ${PORT}
-
-ARG OTP_TIMEOUT=12000
-ARG OTP_URL=''
-ARG GEOCODING_BASE_URL=''
-
-ENV \
-  # Where the app is built and run inside the docker fs \
-  WORK=/opt/digitransit-ui \
-  # Used indirectly for saving npm logs etc. \
-  HOME=/opt/digitransit-ui \
-  # App specific settings to override when the image is run \
-  SENTRY_DSN='' \
-  SENTRY_SECRET_DSN='' \
-  PORT=${PORT} \
-  API_URL='' \
-  MAP_URL='' \
-  OTP_TIMEOUT=${OTP_TIMEOUT} \
-  OTP_URL=${OTP_URL} \
-  GEOCODING_BASE_URL=${GEOCODING_BASE_URL} \
-  APP_PATH='' \
-  CONFIG='' \
-  NODE_ENV='' \
-  # setting a non-empty default value for NODE_OPTS \
-  # if you don't do this then yarn/node seem to think that you want to \
-  # execute a file called "" (empty string) and doesn't start the server \
-  # https://github.com/HSLdevcom/digitransit-ui/issues/4155 \
-  # \
-  # the --title option just sets the harmless property process.title \
-  # https://nodejs.org/api/cli.html#cli_title_title \
-  NODE_OPTS='--title=digitransit-ui' \
-  RELAY_FETCH_TIMEOUT='' \
-  ASSET_URL='' \
-  STATIC_MESSAGE_URL=''
+# Where the app is built and run
+ENV WORK=/opt/digitransit-ui
+# Used indirectly for saving npm logs etc.
+ENV HOME=/opt/digitransit-ui
+ENV NODE_OPTS='--title=BikeTripPlanner'
 
 # Tell Playwright not to download browser binaries, as it is only used for testing (not building).
 # https://github.com/microsoft/playwright/blob/v1.16.2/installation-tests/installation-tests.sh#L200-L216
@@ -51,6 +21,7 @@ RUN npm install yarn
 RUN yarn install
 RUN yarn setup
 RUN OPENSSL_CONF=/dev/null yarn build
+
 RUN rm -rf static docs test /tmp/* .cache
 RUN yarn cache clean --all
 
@@ -59,18 +30,32 @@ RUN yarn cache clean --all
 # But at the moment the build fails
 # when these variables are specified.
 ARG CONFIG=btp
-ARG DEFAULT_MAP_URL=''
-ARG MIN_LON=''
-ARG MAX_LON=''
-ARG MIN_LAT=''
-ARG MAX_LAT=''
-ENV \
-  CONFIG=${CONFIG} \
-  DEFAULT_MAP_URL=${DEFAULT_MAP_URL} \
-  MIN_LON=${MIN_LON} \
-  MAX_LON=${MAX_LON} \
-  MIN_LAT=${MIN_LAT} \
-  MAX_LAT=${MAX_LAT}
+ENV CONFIG=${CONFIG}
+
+ARG MIN_LON=10.011636032586688
+ARG MAX_LON=12.223993889052613
+ARG MIN_LAT=48.70792025947608
+ARG MAX_LAT=50.25793688217101
+ENV MIN_LON=${MIN_LON}
+ENV MAX_LON=${MAX_LON}
+ENV MIN_LAT=${MIN_LAT}
+ENV MAX_LAT=${MAX_LAT}
+
+ARG PORT=8080
+ENV PORT=${PORT}
+EXPOSE ${PORT}
+
+ARG DEFAULT_MAP_URL=http://localhost:7070/styles/bicycle/
+ENV DEFAULT_MAP_URL=${DEFAULT_MAP_URL}
+
+ARG GEOCODING_BASE_URL=http://localhost:4000/v1
+ENV GEOCODING_BASE_URL=${GEOCODING_BASE_URL}
+
+ARG OTP_URL=http://localhost:8080/otp/routers/default/
+ENV OTP_URL=${OTP_URL}
+
+ARG OTP_TIMEOUT=12500
+ENV OTP_TIMEOUT=${OTP_TIMEOUT}
 
 CMD yarn run start
 
