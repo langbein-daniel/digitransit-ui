@@ -4,9 +4,7 @@ FROM node:12
 MAINTAINER Reittiopas version: 0.1
 
 ARG PORT=8080
-# Don't any ports during image creation. They can't be un-exposed later on.
-# The user can specify the port during runtime instead.
-# EXPOSE ${PORT}
+EXPOSE ${PORT}
 
 ARG OTP_TIMEOUT=12000
 ARG OTP_URL=''
@@ -78,4 +76,4 @@ CMD yarn run start
 
 # Fetch the 'About this service' page.
 HEALTHCHECK --interval=15s --retries=3 --start-period=30s --timeout=5s \
- CMD curl -sSf 'http://localhost:8080/tietoja-palvelusta' > /dev/null
+ CMD curl -sSf 'http://localhost:8080/tietoja-palvelusta' | grep 'About this service' || exit 1
