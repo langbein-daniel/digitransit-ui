@@ -5,7 +5,7 @@ const YEAR = 1900 + new Date().getYear();
 
 const DEFAULT_MAP_URL =
   process.env.DEFAULT_MAP_URL || 'http://localhost:7070/styles/bicycle/';
-const OTP_TIMEOUT = process.env.OTP_TIMEOUT || 12500;
+const OTP_TIMEOUT = parseInt(process.env.OTP_TIMEOUT, 10) || 12500;
 
 const minLat = process.env.MIN_LAT || '48.70792025947608';
 const maxLat = process.env.MAX_LAT || '50.25793688217101';
