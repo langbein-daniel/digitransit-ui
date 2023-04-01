@@ -1,7 +1,6 @@
 # End of life, >= 7 ciritical vulnerabilities
 # https://hub.docker.com/layers/library/node/12/images/sha256-3a69ea1270dbf4ef20477361be4b7a43400e559c6abdfaf69d73f7c755f434f5?context=explore
 FROM node:12
-MAINTAINER Reittiopas version: 0.1
 
 # Where the app is built and run
 ENV WORK=/opt/digitransit-ui
@@ -16,14 +15,13 @@ ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 WORKDIR ${WORK}
 ADD . ${WORK}
 
-RUN npm install yarn
+# RUN npm install yarn
 
-RUN yarn install
-RUN yarn setup
-RUN OPENSSL_CONF=/dev/null yarn build
-
-RUN rm -rf static docs test /tmp/* .cache
-RUN yarn cache clean --all
+RUN yarn install \
+    && yarn setup \
+    && OPENSSL_CONF=/dev/null yarn build \
+    && rm -rf static docs test /tmp/* .cache \
+    && yarn cache clean --all
 
 # The build is faster when only the files
 # for one config are built.
