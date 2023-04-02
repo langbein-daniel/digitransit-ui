@@ -5,6 +5,9 @@ const YEAR = 1900 + new Date().getYear();
 
 const DEFAULT_MAP_URL =
   process.env.DEFAULT_MAP_URL || 'http://localhost:7070/styles/bicycle/';
+const STOP_MAP_URL =
+  process.env.STOP_MAP_URL ||
+  'http://localhost:8080/otp/routers/default/vectorTiles/stops,stations/';
 const OTP_TIMEOUT = parseInt(process.env.OTP_TIMEOUT, 10) || 12500;
 
 const minLat = process.env.MIN_LAT || '48.70792025947608';
@@ -33,9 +36,14 @@ export default {
   URL: {
     MAP: {
       // https://github.com/HSLdevcom/digitransit-ui/blob/eecdbb38a5d9108ea07d47d4ec6bb43fd4e2b15d/app/component/map/Map.js#L216
-      // The base URL with tailing slash excluding xyz and size parameter.
+      // The base URL with tailing slash (excluding xyz and size parameter).
       // https://localhost/styles/bicycle/{z}/{x}/{y}{size}.png
       default: DEFAULT_MAP_URL,
+    },
+    STOP_MAP: {
+      // The base URL with tailing slash (excluding xyz parameter).
+      // http://localhost:8080/otp/routers/default/vectorTiles/stops,stations/{z}/{x}/{y}.pbf
+      default: STOP_MAP_URL,
     },
   },
 
@@ -171,9 +179,11 @@ export default {
   // Note: Based on config.hsl.js
   map: {
     // showZoomControl: true,
-    showLayerSelector: false,
+    // showLayerSelector: true,
     showStopMarkerPopupOnMobile: false,
     // showScaleBar: true,
+
+    // TODO
     // attribution:
     //   '<a tabindex="-1" href="http://osm.org/copyright">© OpenStreetMap</a>',
 
