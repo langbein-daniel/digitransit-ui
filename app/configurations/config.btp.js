@@ -15,6 +15,8 @@ const maxLat = process.env.MAX_LAT || '50.25793688217101';
 const minLon = process.env.MIN_LON || '10.011636032586688';
 const maxLon = process.env.MAX_LON || '12.223993889052613';
 
+const MIN_ZOOM = process.env.MIN_ZOOM || 9;
+
 export default {
   // This is required e.g. for favicon generation during `yarn build`.
   CONFIG,
@@ -178,6 +180,8 @@ export default {
 
   // Note: Based on config.hsl.js
   map: {
+    minZoom: MIN_ZOOM,
+
     // showZoomControl: true,
     // showLayerSelector: true,
     showStopMarkerPopupOnMobile: false,
