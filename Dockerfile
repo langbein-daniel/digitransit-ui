@@ -46,6 +46,9 @@ EXPOSE ${PORT}
 ARG DEFAULT_MAP_URL=http://localhost:7070/styles/bicycle/
 ENV DEFAULT_MAP_URL=${DEFAULT_MAP_URL}
 
+ARG STOP_MAP_URL=http://localhost:8080/otp/routers/default/vectorTiles/stops,stations/
+ENV STOP_MAP_URL=${STOP_MAP_URL}
+
 ARG GEOCODING_BASE_URL=http://localhost:4000/v1
 ENV GEOCODING_BASE_URL=${GEOCODING_BASE_URL}
 
