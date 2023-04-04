@@ -5,7 +5,7 @@
 
 /* Operator palette */
 $btp: #24a727;
-$btp-dark: #1a7c1c;
+$btp-dark: #0b8816;
 $btp-airplane: #48d1ff;
 $btp-bus: #c21824;
 $btp-bus-express: #c21824;
@@ -14,6 +14,7 @@ $btp-metro: #2e5ea2;
 $btp-rail: #6d984f;
 $btp-ferry: #ee992c;
 $btp-funicular: #e91dbe;
+$btp-bike: $btp-dark;
 $btp-wait: #aaaaaa;
 
 /* Application palette */
@@ -46,8 +47,9 @@ $rail-color: $btp-rail;
 $ferry-color: $btp-ferry;
 $funicular-color: $btp-funicular;
 
-$walk-color: #925b30;
-$bicycle-color: $primary-color;
+// $walk-color: #925b30;
+$bicycle-color: $btp-bike;
+$citybike-color: $btp-bike;
 $car-color: #000000;
 
 $wait-color: $btp-wait;

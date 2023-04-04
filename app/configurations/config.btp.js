@@ -154,6 +154,8 @@ export default {
       'mode-ferry': '#ee992c',
       'mode-ferry-pier': '#ee992c', // ferry
       'mode-funicular': '#e91dbe',
+      'mode-citybike': '#24a727', // primary
+      'mode-citybike-secondary': '#24a727', // primary
     },
   },
 
