@@ -114,6 +114,7 @@ Notes about startup:
 
 * `npm rebuild node-sass`
 
+* Report bug `TODO: missing parseInt`
 * Pull request for commit `fix: use theme-independent variable`
 * Pull request for commit `docs: Update comment about menu position`
 * Pull request for commit `feat: about section with HTML`

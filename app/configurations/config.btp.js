@@ -134,6 +134,8 @@ export default {
     href: `https://github.com/langbein-daniel/BikeTripPlanner`,
   },
 
+  // mergeStopsByCode: true,
+
   // See also: app/configurations/btp/favicon.svg -> fill color
   // TODO: How to change the color of the bus-tram double icon?
   // TODO: The following has no effect: search-bustram-stop-digitransit.svg -> BUS and TRAM fill color
