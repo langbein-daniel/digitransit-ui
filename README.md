@@ -123,6 +123,7 @@ Notes about startup:
 #### Create a new configuration
 
 * https://github.com/HSLdevcom/digitransit-ui/blob/0ab8bd780e1fe44b789ef32f46f240080d253f41/package.json#L48
+* [docs/Themes.md](docs/Themes.md)
 
 Copy your logo `btp-logo.svg` into the base directory. It will be copied into `app/configurations/images/...`. To create a new theme `btp`, run:
 

@@ -1,18 +1,53 @@
-@import '../../base/waltti';
+/* BikeTripPlanner theme */
 
-/* main theme colors */
-$primary-color: #208922;
-$secondary-color: darken($primary-color, 20%);
+/* Base theme */
+@import '../default/theme';
+
+/* Operator palette */
+$btp: #24a727;
+$btp-dark: #1a7c1c;
+$btp-airplane: #48d1ff;
+$btp-bus: #c21824;
+$btp-bus-express: #c21824;
+$btp-tram: #820d86;
+$btp-metro: #2e5ea2;
+$btp-rail: #6d984f;
+$btp-ferry: #ee992c;
+$btp-funicular: #e91dbe;
+$btp-wait: #aaaaaa;
+
+/* Application palette */
+$primary-color: $btp;
+$secondary-color: $btp-dark;
+$favourite-color: #ffef00;
 $hilight-color: $primary-color;
 $action-color: $primary-color;
-$bus-color: $primary-color;
 $viewpoint-marker-color: $primary-color;
 $current-location-color: $primary-color;
 
-$standalone-btn-color: $primary-color;
-$link-color: $primary-color;
-
 /* Component palette */
+$standalone-btn-color: $primary-color;
+$standalone-btn-hover-color: $secondary-color;
+$standalone-btn-active-color: $secondary-color;
+$viewpoint-marker-color: $primary-color;
+$link-color: $primary-color;
 $desktop-title-color: $primary-color;
 $desktop-title-arrow-icon-color: $secondary-color;
 $top-bar-color: $primary-color;
+
+/* Vehicle palette */
+// Used e.g. by marker-popup.scss and itinerary.scss
+$airplane-color: $btp-airplane;
+$bus-color: $btp-bus;
+$bus-express-color: $btp-bus-express;
+$tram-color: $btp-tram;
+$metro-color: $btp-metro;
+$rail-color: $btp-rail;
+$ferry-color: $btp-ferry;
+$funicular-color: $btp-funicular;
+
+$walk-color: #925b30;
+$bicycle-color: $primary-color;
+$car-color: #000000;
+
+$wait-color: $btp-wait;

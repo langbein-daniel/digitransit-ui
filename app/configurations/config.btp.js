@@ -135,12 +135,24 @@ export default {
   },
 
   // See also: app/configurations/btp/favicon.svg -> fill color
+  // TODO: How to change the color of the bus-tram double icon?
+  // TODO: The following has no effect: search-bustram-stop-digitransit.svg -> BUS and TRAM fill color
   // See also: sass/themes/btp/_theme.scss -> $primary-color
   colors: {
-    primary: '#208922',
-    // iconColors: {
-    //   'mode-bus': '#208922',
-    // },
+    primary: '#24a727',
+    hover: '#1a7c1c', // secondary
+    iconColors: {
+      'mode-airplane': '#48d1ff',
+      'mode-bus': '#c21824',
+      'mode-bus-express': '#c21824', // bus
+      'mode-bus-local': '#c21824', // bus
+      'mode-tram': '#820d86',
+      'mode-metro': '#2e5ea2',
+      'mode-rail': '#6d984f',
+      'mode-ferry': '#ee992c',
+      'mode-ferry-pier': '#ee992c', // ferry
+      'mode-funicular': '#e91dbe',
+    },
   },
 
   socialMedia: {
