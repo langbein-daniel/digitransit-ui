@@ -10,10 +10,10 @@ const STOP_MAP_URL =
   'http://localhost:8080/otp/routers/default/vectorTiles/stops,stations/';
 const OTP_TIMEOUT = parseInt(process.env.OTP_TIMEOUT, 10) || 20000;
 
-const minLat = process.env.MIN_LAT || '48.70792025947608';
-const maxLat = process.env.MAX_LAT || '50.25793688217101';
-const minLon = process.env.MIN_LON || '10.011636032586688';
-const maxLon = process.env.MAX_LON || '12.223993889052613';
+const MIN_LAT = process.env.MIN_LAT || '48.70792025947608';
+const MAX_LAT = process.env.MAX_LAT || '50.25793688217101';
+const MIN_LON = process.env.MIN_LON || '10.011636032586688';
+const MAX_LON = process.env.MAX_LON || '12.223993889052613';
 
 const MIN_ZOOM = process.env.MIN_ZOOM || 9;
 
@@ -156,17 +156,17 @@ export default {
   // parkingAreaSources: ['liipi'],
 
   searchParams: {
-    'boundary.rect.min_lat': minLat,
-    'boundary.rect.max_lat': maxLat,
-    'boundary.rect.min_lon': minLon,
-    'boundary.rect.max_lon': maxLon,
+    'boundary.rect.min_lat': MIN_LAT,
+    'boundary.rect.max_lat': MAX_LAT,
+    'boundary.rect.min_lon': MIN_LON,
+    'boundary.rect.max_lon': MAX_LON,
   },
 
   areaPolygon: [
-    [minLon, minLat],
-    [minLon, maxLat],
-    [maxLon, maxLat],
-    [maxLon, minLat],
+    [MIN_LON, MIN_LAT],
+    [MIN_LON, MAX_LAT],
+    [MAX_LON, MAX_LAT],
+    [MAX_LON, MIN_LAT],
   ],
 
   defaultEndpoint: {
@@ -193,8 +193,8 @@ export default {
 
     // AreBounds is for keeping map and user inside given area.
     areaBounds: {
-      corner1: [maxLat, maxLon],
-      corner2: [minLat, minLon],
+      corner1: [MAX_LAT, MAX_LON],
+      corner2: [MIN_LAT, MIN_LON],
     },
   },
 
