@@ -69,8 +69,6 @@ export default {
   showWeatherInformation: false,
 
   availableTickets: {},
-  // If true, load available tickets from OTP and store in `availableTickets` config value.
-  loadAvailableTickets: false,
   showTicketSelector: false,
 
   showBikeAndPublicItineraries: true,

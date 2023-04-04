@@ -240,9 +240,6 @@ function processTicketTypeResult(result) {
 }
 
 function setUpAvailableTickets() {
-  if (!config.loadAvailableTickets) {
-    return
-  }
   return new Promise(resolve => {
     const options = {
       method: 'POST',

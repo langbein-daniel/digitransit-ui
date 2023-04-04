@@ -120,9 +120,6 @@ Notes about startup:
 * Don't forget this commit: `revert: Remove dedupestops from Pelias options`
 * Maybe pull request for commit `docs: Add documentation for agency.show config option`
 
-* To avoid a connection from the server to OTP on startup, set `loadAvailableTickets: false`
-  * See corresponding local commit
-
 #### Create a new configuration
 
 * https://github.com/HSLdevcom/digitransit-ui/blob/0ab8bd780e1fe44b789ef32f46f240080d253f41/package.json#L48
