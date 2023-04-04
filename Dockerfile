@@ -46,19 +46,7 @@ ARG PORT=8080
 ENV PORT=${PORT}
 EXPOSE ${PORT}
 
-ARG DEFAULT_MAP_URL=http://localhost:7070/styles/bicycle/
-ENV DEFAULT_MAP_URL=${DEFAULT_MAP_URL}
-
-ARG STOP_MAP_URL=http://localhost:8080/otp/routers/default/vectorTiles/stops,stations/
-ENV STOP_MAP_URL=${STOP_MAP_URL}
-
-ARG GEOCODING_BASE_URL=http://localhost:4000/v1
-ENV GEOCODING_BASE_URL=${GEOCODING_BASE_URL}
-
-ARG OTP_URL=http://localhost:8080/otp/routers/default/
-ENV OTP_URL=${OTP_URL}
-
-ARG OTP_TIMEOUT=12500
+ARG OTP_TIMEOUT=20000
 ENV OTP_TIMEOUT=${OTP_TIMEOUT}
 
 CMD yarn run start
