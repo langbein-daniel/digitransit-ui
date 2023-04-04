@@ -8,7 +8,7 @@ const DEFAULT_MAP_URL =
 const STOP_MAP_URL =
   process.env.STOP_MAP_URL ||
   'http://localhost:8080/otp/routers/default/vectorTiles/stops,stations/';
-const OTP_TIMEOUT = parseInt(process.env.OTP_TIMEOUT, 10) || 12500;
+const OTP_TIMEOUT = parseInt(process.env.OTP_TIMEOUT, 10) || 20000;
 
 const minLat = process.env.MIN_LAT || '48.70792025947608';
 const maxLat = process.env.MAX_LAT || '50.25793688217101';
