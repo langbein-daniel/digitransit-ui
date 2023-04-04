@@ -17,6 +17,8 @@ const MAX_LON = process.env.MAX_LON || '12.223993889052613';
 
 const MIN_ZOOM = process.env.MIN_ZOOM || 9;
 
+const copyrightText = `© Daniel Langbein ${YEAR}`;
+
 export default {
   // This is required e.g. for favicon generation during `yarn build`.
   CONFIG,
@@ -49,6 +51,13 @@ export default {
     },
   },
 
+  // TODO: The "Cookie settings" button does not work as `renew` is undefined. See `window.CookieConsent.renew`.
+  //
+  // Mobile-view: Bottom right button "Cookie settings"
+  // useCookiesPrompt: true,
+  // Mobile-view: Bottom left text
+  // copyrightText,
+
   // Limit the available languages in `MainMenu.js`.
   availableLanguages: ['en', 'de'],
 
@@ -62,6 +71,7 @@ export default {
   availableTickets: {},
   // If true, load available tickets from OTP and store in `availableTickets` config value.
   loadAvailableTickets: false,
+  showTicketSelector: false,
 
   showBikeAndPublicItineraries: true,
   // If disabled, one can't enable the "bike & ride" and "bike and transit" modes.
@@ -155,12 +165,19 @@ export default {
   // Not required if "park & ride" is disabled.
   // parkingAreaSources: ['liipi'],
 
+  // Use this if you have a rectangular areaPolygon.
   searchParams: {
     'boundary.rect.min_lat': MIN_LAT,
     'boundary.rect.max_lat': MAX_LAT,
     'boundary.rect.min_lon': MIN_LON,
     'boundary.rect.max_lon': MAX_LON,
   },
+  // Use this if you have a non-rectangular areaPolygon.
+  //
+  // This results in
+  //   config.searchParams['boundary.polygon'] = pointsParam;
+  // where pointsParam is created from config.areaPolygon
+  // useSearchPolygon: true,
 
   areaPolygon: [
     [MIN_LON, MIN_LAT],
@@ -219,7 +236,7 @@ export default {
   },
 
   menu: {
-    copyright: { label: `© Daniel Langbein ${YEAR}` },
+    copyright: { label: copyrightText },
     content: [
       {
         name: 'menu-feedback',
