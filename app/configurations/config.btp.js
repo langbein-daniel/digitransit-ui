@@ -60,6 +60,7 @@ export default {
   // Limit the available languages in `MainMenu.js`.
   availableLanguages: ['en', 'de'],
 
+  // TODO: Make this configurable via system environment (-> Docker container runtime)
   // Documentation: https://momentjs.com/timezone/docs/#/data-loading/adding-a-zone/
   // Up-to-date timezone data: https://github.com/moment/moment-timezone/blob/develop/data/packed/latest.json
   timezoneData:
@@ -200,12 +201,13 @@ export default {
   ],
 
   defaultEndpoint: {
+    // TODO: Make this configurable or fix the TODO below.
     lat: 49.446403,
     lon: 11.082948,
 
     // TODO: With the following, the main page has a white map until one searches for a location.
-    // lat: 0.5 * (minLat + maxLat),
-    // lon: 0.5 * (minLon + maxLon),
+    // lat: 0.5 * (MIN_LAT + MAX_LAT),
+    // lon: 0.5 * (MIN_LON + MAX_LON),
   },
 
   // Note: Based on config.hsl.js
