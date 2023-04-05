@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="yarn run dev" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="dev" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs>
+      <env name="CONFIG" value="btp" />
+      <env name="PORT" value="9999" />
+      <env name="OTP_URL" value="http://localhost:8080/otp/routers/default/" />
+      <env name="GEOCODING_BASE_URL" value="http://localhost:4000/v1" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>
