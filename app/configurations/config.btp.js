@@ -31,11 +31,10 @@ export default {
   // - https://github.com/relay-tools/react-relay-network-modern/blob/bf0b16f7a008bdaf72e97a92eeddf9ee4d2d7a38/src/middlewares/retry.js#L77
   OTPTimeout: OTP_TIMEOUT,
 
-  // Transit Feed
-  //
-  // TODO transit agency??
-  // GTFS.zip/agency.txt/agency_name=HSL
-  // feedIds: ['OULU'],
+  // Transit Feed IDs
+  // - OpenTripPlanner -> Give GTFS import the ID "1"
+  // - Pelias GTFS import -> Use the prefix "1"
+  feedIds: ['1'],
 
   URL: {
     MAP: {
