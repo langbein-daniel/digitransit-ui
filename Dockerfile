@@ -1,12 +1,11 @@
 # End of life, >= 7 ciritical vulnerabilities
 # https://hub.docker.com/layers/library/node/12/images/sha256-3a69ea1270dbf4ef20477361be4b7a43400e559c6abdfaf69d73f7c755f434f5?context=explore
-FROM node:12
+FROM node:12 as builder
 
 # Where the app is built and run
 ENV WORK=/opt/digitransit-ui
 # Used indirectly for saving npm logs etc.
 ENV HOME=/opt/digitransit-ui
-ENV NODE_OPTS='--title=BikeTripPlanner'
 
 # Tell Playwright not to download browser binaries, as it is only used for testing (not building).
 # https://github.com/microsoft/playwright/blob/v1.16.2/installation-tests/installation-tests.sh#L200-L216
@@ -16,12 +15,17 @@ WORKDIR ${WORK}
 ADD . ${WORK}
 
 # RUN npm install yarn
+RUN yarn install
+RUN yarn setup
+RUN OPENSSL_CONF=/dev/null yarn build
+RUN rm -rf static docs test /tmp/* .cache
+RUN yarn cache clean --all
 
-RUN yarn install \
-    && yarn setup \
-    && OPENSSL_CONF=/dev/null yarn build \
-    && rm -rf static docs test /tmp/* .cache \
-    && yarn cache clean --all
+FROM node:12
+WORKDIR /opt/digitransit-ui
+COPY --from=builder /opt/digitransit-ui /opt/digitransit-ui
+
+ENV NODE_OPTS='--title=BikeTripPlanner'
 
 # The build is faster when only the files
 # for one config are built.
