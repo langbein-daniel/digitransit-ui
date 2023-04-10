@@ -10,12 +10,16 @@ const STOP_MAP_URL =
   'http://localhost:8080/otp/routers/default/vectorTiles/stops,stations/';
 const OTP_TIMEOUT = parseInt(process.env.OTP_TIMEOUT, 10) || 20000;
 
-const MIN_LAT = process.env.MIN_LAT || '48.70792025947608';
-const MAX_LAT = process.env.MAX_LAT || '50.25793688217101';
-const MIN_LON = process.env.MIN_LON || '10.011636032586688';
-const MAX_LON = process.env.MAX_LON || '12.223993889052613';
+const MIN_LAT = parseFloat(process.env.MIN_LAT) || 48.70792025947608;
+const MAX_LAT = parseFloat(process.env.MAX_LAT) || 50.25793688217101;
+const MIN_LON = parseFloat(process.env.MIN_LON) || 10.011636032586688;
+const MAX_LON = parseFloat(process.env.MAX_LON) || 12.223993889052613;
 
 const MIN_ZOOM = process.env.MIN_ZOOM || 9;
+
+// Center
+const lat = 0.5 * (MIN_LAT + MAX_LAT);
+const lon = 0.5 * (MIN_LON + MAX_LON);
 
 const copyrightText = `© Daniel Langbein ${YEAR}`;
 
@@ -201,13 +205,8 @@ export default {
   ],
 
   defaultEndpoint: {
-    // TODO: Make this configurable or fix the TODO below.
-    lat: 49.446403,
-    lon: 11.082948,
-
-    // TODO: With the following, the main page has a white map until one searches for a location.
-    // lat: 0.5 * (MIN_LAT + MAX_LAT),
-    // lon: 0.5 * (MIN_LON + MAX_LON),
+    lat,
+    lon,
   },
 
   // Note: Based on config.hsl.js
