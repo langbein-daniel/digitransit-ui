@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="yarn run start" type="NodeJSConfigurationType" node-parameters="--title=BikeTripPlanner" path-to-js-file="server/server.js" working-dir="$PROJECT_DIR$">
+    <envs>
+      <env name="CONFIG" value="btp" />
+      <env name="PORT" value="9999" />
+      <env name="OTP_URL" value="http://localhost:8080/otp/routers/default/" />
+      <env name="GEOCODING_BASE_URL" value="http://localhost:4000/v1" />
+    </envs>
+    <EXTENSION ID="com.jetbrains.nodejs.run.NodeStartBrowserRunConfigurationExtension">
+      <browser start="true" with-js-debugger="true" url="http://localhost:9999" />
+    </EXTENSION>
+    <method v="2" />
+  </configuration>
+</component>
