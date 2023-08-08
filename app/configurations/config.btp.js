@@ -2,6 +2,12 @@ const CONFIG = 'btp';
 const APP_TITLE = 'BikeTripPlanner';
 const APP_DESCRIPTION = 'Plan trips with bike & transit';
 const YEAR = 1900 + new Date().getYear();
+// String array containing HTML code.
+// Can be passed through environment variable in the form of a JSON array.
+const DATA_SOURCES_PARAGRAPHS = (process.env.DATA_SOURCES_PARAGRAPHS &&
+  JSON.parse(process.env.DATA_SOURCES_PARAGRAPHS)) || [
+  "Maps, streets, buildings, bike lockers, stop locations, etc. are provided by OpenStreetMap contributors. Address data is retrieved from Who's On First. Public transport routes and timetables are downloaded from the VGN.",
+];
 
 const timezone = process.env.TIMEZONE || 'Europe/Berlin';
 
@@ -286,10 +292,7 @@ export default {
       },
       {
         header: 'Datenquellen',
-        paragraphs: [
-          // TODO. Inspiration: https://herrenberg.stadtnavi.de/dieser-dienst
-          "Karten, Straßen, Gebäude, Fahrradständer, Haltestellen, etc. wurden von OpenStreetMap Beitragenden erstellt. Adressdaten stammen von Who's On First. Öffentliche Verkehrslinien und Fahrpläne stammen vom VGN.",
-        ],
+        paragraphs: DATA_SOURCES_PARAGRAPHS,
       },
       {
         header: 'Datenschutzhinweise',
@@ -316,10 +319,7 @@ export default {
       },
       {
         header: 'Data sources',
-        paragraphs: [
-          // TODO
-          "Maps, streets, buildings, bike lockers, stop locations etc. are provided by OpenStreetMap contributors. Address data is retrieved from Who's On First. Public transport routes and timetables are downloaded from the VGN.",
-        ],
+        paragraphs: DATA_SOURCES_PARAGRAPHS,
       },
       {
         header: 'Privacy Policy',

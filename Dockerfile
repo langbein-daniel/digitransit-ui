@@ -37,6 +37,9 @@ ENV CONFIG=${CONFIG}
 ARG TIMEZONE=Europe/Berlin
 ENV TIMEZONE=${TIMEZONE}
 
+ARG DATA_SOURCES_PARAGRAPHS='["Map data from OpenStreetMap. This includes, among others, roads, bicycle and car parking, addresses, public transit stops and public transit routes. https://osm.org/copyright","Public transit timetable data by VGN – Verkehrsverbund Großraum Nürnberg GmbH. https://vgn.de","Produced using Copernicus data and information funded by the European Union - EU-DEM layers."]'
+ENV DATA_SOURCES_PARAGRAPHS=${DATA_SOURCES_PARAGRAPHS}
+
 ARG MIN_LON=10.011636032586688
 ARG MAX_LON=12.223993889052613
 ARG MIN_LAT=48.70792025947608
